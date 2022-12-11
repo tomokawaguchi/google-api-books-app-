@@ -170,6 +170,8 @@ const App = () => {
 		fetchBooks(searchKeyword);
 	};
 
+	console.log("bookData.length: ", bookData.length);
+
 	return (
 		<div className={styles.App}>
 			<Banner />
@@ -197,9 +199,13 @@ const App = () => {
 					<SearchNotFound searchedKeyword={searchKeyword} />
 				)}
 			</SectionSingleWrapper>
-			<SectionSingleWrapper>
-				<Button btnColor="black" btnText="Load more" clickToLoad={handleLoadMoreClick} />
-			</SectionSingleWrapper>
+			{bookData.length % 12 !== 0 || bookData.length === 0 ? (
+				<></>
+			) : (
+				<SectionSingleWrapper>
+					<Button btnColor="black" btnText="Load more" clickToLoad={handleLoadMoreClick} />
+				</SectionSingleWrapper>
+			)}
 			<Footer />
 		</div>
 	);

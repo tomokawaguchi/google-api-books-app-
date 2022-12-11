@@ -1,0 +1,26 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.SectionSingleWrapper {
+	@include displayFlex(unset, unset);
+	padding: 0 96px;
+
+	> div {
+		@include displayFlex(space-between, center);
+		max-width: 1440px;
+		padding: 40px 0;
+		margin: 0 auto;
+	}
+
+	@include mediaQuery("max", 930px) {
+		padding: 0 48px;
+	}
+	@include mediaQuery("max", 580px) {
+		padding: 0 24px;
+	}
+	@include mediaQuery("max", 480px) {
+		> div {
+			padding: 20px 0;
+		}
+	}
+}

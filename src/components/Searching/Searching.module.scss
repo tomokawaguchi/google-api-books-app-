@@ -1,0 +1,16 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.Searching {
+	font-size: 20px;
+	min-height: 300px;
+}
+
+.BooksGroup {
+	&_BooksWrapper {
+		@include displayFlex(space-between, unset);
+		position: relative;
+		flex-wrap: wrap;
+		filter: blur(4px);
+	}
+}

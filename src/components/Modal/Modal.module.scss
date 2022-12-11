@@ -1,0 +1,103 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.Modal {
+	@include displayFlex(center, center);
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(28, 28, 28, 0.7);
+	z-index: 2;
+
+	&_Inner {
+		position: relative;
+		background-color: $bg-white;
+		border: 1px solid $style-black;
+		border-radius: 20px;
+		width: 70%;
+		padding: 40px;
+	}
+
+	&_ContentWrapper {
+		@include displayFlex(unset, unset);
+		overflow-y: scroll;
+		max-height: 700px;
+	}
+
+	&_Thumbnail {
+		@include flex(0 0 240px);
+		background-repeat: no-repeat;
+		background-position: top;
+		background-size: contain;
+		height: auto;
+		width: 200px;
+		margin-right: 50px;
+	}
+
+	&_CatList {
+		@include resetListStylings;
+
+		&_Item {
+			font-size: 18px;
+			color: $orange;
+		}
+	}
+
+	span {
+		font-weight: 700;
+		padding-right: 10px;
+	}
+
+	&_AuthorList {
+		@include resetListStylings;
+		display: inline-grid;
+		grid-template-columns: 1fr 1fr;
+
+		&_Item {
+			position: relative;
+		}
+
+		&_Item:not(:last-of-type) {
+			padding-right: 10px;
+
+			&:after {
+				content: " ,";
+				display: inline-block;
+				right: 0;
+				top: 0;
+				bottom: 0;
+			}
+		}
+	}
+
+	&_CloseBtn {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		width: 35px;
+		height: 35px;
+		cursor: pointer;
+	}
+
+	@include mediaQuery("max", 930px) {
+		&_Thumbnail {
+			background-position: center;
+			width: 100%;
+			margin-right: 0;
+			margin: 40px 0;
+		}
+		&_ContentWrapper {
+			flex-direction: column;
+		}
+	}
+	@include mediaQuery("max", 430px) {
+		&_Inner {
+			width: 80%;
+			padding: 20px;
+		}
+	}
+}

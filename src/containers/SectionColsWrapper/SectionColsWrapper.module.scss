@@ -1,0 +1,33 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.SectionColsWrapper {
+	padding: 0 96px;
+
+	> div {
+		@include displayFlex(space-between, center);
+		max-width: 1440px;
+		padding: 70px 0;
+		padding-bottom: 0;
+		margin: 0 auto;
+	}
+
+	@include mediaQuery("max", 930px) {
+		padding: 0 48px;
+	}
+	@include mediaQuery("max", 670px) {
+		> div {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+	}
+	@include mediaQuery("max", 580px) {
+		padding: 0 24px;
+	}
+	@include mediaQuery("max", 480px) {
+		> div {
+			padding: 50px 0;
+			padding-bottom: 10px;
+		}
+	}
+}

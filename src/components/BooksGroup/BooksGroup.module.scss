@@ -1,0 +1,9 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.BooksGroup {
+	&_BooksWrapper {
+		@include displayFlex(space-between, unset);
+		flex-wrap: wrap;
+	}
+}

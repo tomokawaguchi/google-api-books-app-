@@ -1,0 +1,47 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.Button {
+	@include transitionEffect(0.3s);
+	@include displayFlex(center, center);
+	font-size: 20px;
+	font-weight: 700;
+	color: white;
+	background-color: $style-black;
+	border: 2px solid $style-black;
+	border-radius: 100px;
+	padding: 15px 50px;
+	margin: 30px 0;
+	outline: none;
+	cursor: pointer;
+
+	@include onHoverFocus {
+		color: $style-black;
+		background-color: $grey-white;
+	}
+
+	&_Green {
+		background-color: $green;
+		border-color: $green;
+
+		@include onHoverFocus {
+			color: $green;
+		}
+	}
+	&_Yellow {
+		background-color: $yellow;
+		border-color: $yellow;
+
+		@include onHoverFocus {
+			color: $yellow;
+		}
+	}
+	&_Orange {
+		background-color: $orange;
+		border-color: $orange;
+
+		@include onHoverFocus {
+			color: $orange;
+		}
+	}
+}

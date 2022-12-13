@@ -1,0 +1,83 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.SearchBar {
+	width: 100%;
+
+	&_Inner {
+		@include displayFlex(center, center);
+		width: 60%;
+		position: relative;
+	}
+
+	&_Input {
+		position: relative;
+		font-size: 18px;
+		border-radius: 100px;
+		border: 1px solid $style-black;
+		width: 100%;
+		padding: 15px 25px;
+		padding-right: 100px;
+		outline: none;
+	}
+
+	&_ButtonsWrapper {
+		@include displayFlex(center, center);
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+
+	&_Reset {
+		@include displayFlex(center, center);
+		position: absolute;
+		font-size: 30px;
+		color: $style-black;
+		border: none;
+		background-color: transparent;
+		right: 50px;
+		padding: 7px;
+		cursor: pointer;
+	}
+
+	&_Button {
+		@include transitionEffect(0.2s);
+		@include displayFlex(center, center);
+		position: absolute;
+		right: 10px;
+		color: white;
+		background-color: $yellow;
+		border: 1px solid $yellow;
+		border-radius: 100px;
+		padding: 7px;
+		cursor: pointer;
+
+		> svg {
+			width: 25px;
+			height: 25px;
+		}
+
+		@include onHoverFocus {
+			color: $yellow;
+			background-color: $grey-white;
+		}
+	}
+
+	@include mediaQuery("max", 1000px) {
+		&_Inner {
+			width: 80%;
+		}
+	}
+	@include mediaQuery("max", 780px) {
+		&_Inner {
+			width: 90%;
+		}
+	}
+	@include mediaQuery("max", 670px) {
+		&_Inner {
+			width: 100%;
+			margin-bottom: 30px;
+		}
+	}
+}

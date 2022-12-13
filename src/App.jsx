@@ -12,10 +12,10 @@ import Searching from "./components/Searching/Searching";
 import Modal from "./components/Modal/Modal";
 import ResultStyleToggle from "./containers/ResultStyleToggle/ResultStyleToggle";
 import OrderSwitch from "./components/OrderSwitch/OrderSwitch";
+import { fetchBooks } from "./api/api";
 
 // API
-const GOOGLE_BOOKS_API = "https://www.googleapis.com/books/v1/volumes?q=";
-const defaultKeyword = "sydney";
+const defaultSearchKeyword = "sydney";
 
 const App = () => {
 	// For loading screen
@@ -30,7 +30,7 @@ const App = () => {
 	const [total, setTotal] = useState(0);
 
 	// For the search input keyword
-	let [searchKeyword, setSearchKeyword] = useState(defaultKeyword);
+	let [searchKeyword, setSearchKeyword] = useState(defaultSearchKeyword);
 	let prevSearchKeyword = useRef("");
 
 	// For the layout change
@@ -48,48 +48,45 @@ const App = () => {
 	const searchBtn = useRef(); // Search btn
 	const searchInput = useRef(); // Search Input
 
-	// Fetching data from Google API
-	const fetchBooks = async (currentKeyword, clickedBtn = "") => {
-		try {
-			// Set to fetch 12 books every request
-			// The index of the first books at every page is managed with firstIndex state
-			const response = await fetch(
-				`${GOOGLE_BOOKS_API}${currentKeyword}&orderBy=${order.current}&printType=books&startIndex=${firstIndex.current}&&maxResults=12`
-			);
-			const jsonPromises = await response.json();
-			const { items, totalItems } = jsonPromises;
+	// Setting states after data is fetched
+	const setBooksToState = async (data, clickedBtn = "") => {
+		const { items, totalItems } = await data;
+		// Update the total items state
+		setTotal(totalItems);
 
-			// Update the total items state
-			setTotal(totalItems);
-
-			// Assigning obtained data to respective state variables
-			if (clickedBtn === "loadMore") {
-				setBookData((prevState) => {
-					prevBookData.current = prevState;
-					return [...prevState, ...items];
-				});
-			} else {
-				setBookData((prevState) => {
-					prevBookData.current = prevState;
-					return items === undefined ? [] : [...items];
-				});
-			}
-		} catch (e) {
-			console.log(e);
-		} finally {
-			// Update the loading state -> UI switches from loading to Books list / Not Found
-			setIsLoading(false);
-			isLoadingMore.current = false;
+		// Assigning obtained data to respective state variables
+		if (clickedBtn === "loadMore") {
+			setBookData((prevState) => {
+				prevBookData.current = prevState;
+				return [...prevState, ...items];
+			});
+		} else {
+			setBookData((prevState) => {
+				prevBookData.current = prevState;
+				return items === undefined ? [] : [...items];
+			});
 		}
+
+		// Update the loading state -> UI switches from loading to Books list / Not Found
+		setIsLoading(false);
+		isLoadingMore.current = false;
 	};
 
 	// Only run once on the initial render()
 	useEffect(() => {
 		// Set the default value in the input field for the user
-		searchInput.current.value = defaultKeyword;
+		searchInput.current.value = defaultSearchKeyword;
 		// Set the loading to be tue and call api
 		setIsLoading(true);
-		fetchBooks(searchKeyword);
+
+		// Fetching data from Google API
+		const booksData = async () => {
+			const data = await fetchBooks(searchKeyword, order.current, firstIndex.current);
+			return data;
+		};
+
+		// Set the data to variable
+		setBooksToState(booksData());
 	}, []);
 
 	// To handle search click -> track if search btn is clicked or not (API call trigger)
@@ -99,7 +96,15 @@ const App = () => {
 		// If the search keywords are different from previous, do the search otherwise do nothing
 		if (keywordToSearch !== prevSearchKeyword.current) {
 			setIsLoading(true);
-			fetchBooks(keywordToSearch, "search");
+
+			// Fetching data with the entered Keyword
+			const booksData = async () => {
+				const data = await fetchBooks(keywordToSearch, order.current, firstIndex.current);
+				return data;
+			};
+
+			// Set the data to variable
+			setBooksToState(booksData(), "search");
 		}
 	};
 
@@ -129,7 +134,15 @@ const App = () => {
 		firstIndex.current += 12;
 		setIsLoading(true);
 		isLoadingMore.current = true; // For the blurred bg
-		fetchBooks(searchKeyword, "loadMore");
+
+		// Calling for api
+		const booksData = async () => {
+			const data = await fetchBooks(searchKeyword, order.current, firstIndex.current);
+			return data;
+		};
+
+		// Set the data to variable
+		setBooksToState(booksData(), "loadMore");
 	};
 
 	// To handle icon click to switch style
@@ -167,10 +180,16 @@ const App = () => {
 		// Fetch the data with the selected order parameter
 		setIsLoading(true);
 		isLoadingMore.current = true;
-		fetchBooks(searchKeyword);
-	};
 
-	console.log("bookData.length: ", bookData.length);
+		// Calling for api
+		const booksData = async () => {
+			const data = await fetchBooks(searchKeyword, order.current, firstIndex.current);
+			return data;
+		};
+
+		// Set the data to variable
+		setBooksToState(booksData());
+	};
 
 	return (
 		<div className={styles.App}>

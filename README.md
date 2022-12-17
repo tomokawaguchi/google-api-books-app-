@@ -1,5 +1,8 @@
 # Google Api Books App Project
 
+![project snapshot](https://github.com/tomokawaguchi/google-api-books-app-/blob/main/src/assets/project-snapshot.png?raw=true)
+
+
 This project was built in React JS with Google Books Api. The app allows you to search books from the Google book library. The app has used react hooks with functional components only. The SCSS modules are utilised for the styling of the app.
 
 Some of the majour functionalities are:

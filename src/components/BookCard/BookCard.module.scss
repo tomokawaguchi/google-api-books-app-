@@ -1,0 +1,150 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+// Common book card stylings
+.BookItem {
+	@include transitionEffect(0.2s);
+	background-color: $grey-white;
+	border-bottom: 1px solid $style-black;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 100%;
+	margin-bottom: 40px;
+	cursor: pointer;
+
+	&_Inner {
+		@include displayFlex(unset, unset);
+		padding: 20px;
+	}
+
+	&_Thumbnail {
+		background-repeat: no-repeat;
+		background-position: center;
+		height: 100%;
+		width: 100%;
+	}
+
+	&_Title {
+		font-weight: 700;
+		font-size: 24px;
+	}
+
+	&_Para {
+		font-size: 16px;
+	}
+
+	@include onHoverFocus {
+		transform: scale(1.02);
+		box-shadow: 0 0 7px 2px rgba(0, 0, 0, 0.07);
+	}
+}
+
+// For the list layout
+.ListStyle {
+	@include transitionEffect(0.6s);
+	@include flex(0 0 48%);
+
+	.BookItem_Inner {
+		@include transitionEffect(0.6s);
+		padding: 40px 20px;
+	}
+	.BookItem_Thumbnail {
+		@include flex(0 1 240px);
+		min-height: 230px;
+		height: 100%;
+		min-width: 210px;
+		width: 100%;
+	}
+	.BookItem_TextWrapper {
+		@include transitionEffect(0.6s);
+		@include flex(auto);
+	}
+
+	@include mediaQuery("max", 1200px) {
+		@include flex(0 0 100%);
+	}
+	@include mediaQuery("max", 550px) {
+		.BookItem_Inner {
+			flex-direction: column;
+			padding: 30px 50px;
+		}
+		.BookItem_Thumbnail {
+			background-size: contain;
+			margin-bottom: 40px;
+		}
+	}
+	@include mediaQuery("max", 400px) {
+		.BookItem_Inner {
+			padding: 20px;
+		}
+		.BookItem_Thumbnail {
+			min-width: 200px;
+		}
+	}
+}
+
+// For the grid layout
+.GridStyle {
+	@include transitionEffect(0.6s);
+	@include displayFlex(unset, unset);
+	@include flex(0 0 23%);
+	min-height: 550px;
+
+	.BookItem_Inner {
+		@include transitionEffect(0.6s);
+		flex-direction: column;
+		width: 100%;
+	}
+	.BookItem_Thumbnail {
+		height: 200px;
+		min-width: 300px;
+		margin-bottom: 40px;
+	}
+
+	@include mediaQuery("max", 1580px) {
+		@include flex(0 0 32%);
+	}
+
+	@include mediaQuery("max", 1220px) {
+		.BookItem_Thumbnail {
+			min-width: 200px;
+		}
+	}
+	@include mediaQuery("max", 1000px) {
+		@include flex(0 0 48%);
+
+		.BookItem_Thumbnail {
+			min-width: 300px;
+		}
+	}
+	@include mediaQuery("max", 840px) {
+		.BookItem_Thumbnail {
+			min-width: 200px;
+		}
+	}
+	@include mediaQuery("max", 650px) {
+		@include flex(0 0 100%);
+
+		.BookItem_Thumbnail {
+			min-width: 300px;
+		}
+	}
+	@include mediaQuery("max", 400px) {
+		.BookItem_Thumbnail {
+			min-width: 200px;
+		}
+	}
+}
+
+.CatList {
+	@include resetListStylings;
+	@include displayFlex(unset, unset);
+	flex-wrap: wrap;
+
+	&_Item {
+		font-size: 14px;
+		font-weight: 700;
+		color: $orange;
+		padding-right: 15px;
+	}
+}

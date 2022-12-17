@@ -1,0 +1,13 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.SearchNotFound {
+	&_Message {
+		font-size: 24px;
+
+		&_Orange {
+			color: $orange;
+			font-weight: 700;
+		}
+	}
+}

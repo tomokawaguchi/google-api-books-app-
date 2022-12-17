@@ -1,0 +1,36 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.GridListToggle {
+	@include displayFlex(space-around, center);
+	border: 1px solid $style-black;
+	border-radius: 100px;
+	width: 75px;
+	height: 45px;
+	padding: 0 5px;
+
+	&_Icon {
+		@include displayFlex(center, center);
+		@include flex(0 0 22px);
+		background-color: transparent;
+		border-radius: 100px;
+		padding: 7px;
+		cursor: pointer;
+
+		> svg {
+			color: $style-black;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+		}
+
+		// Active class
+		&_isActive {
+			background-color: $green;
+
+			> svg {
+				color: $grey-white;
+			}
+		}
+	}
+}

@@ -1,0 +1,14 @@
+/* For browser reset on html & body */
+html,
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/* Active modal state */
+body.activeModal {
+	overflow-y: hidden;
+}

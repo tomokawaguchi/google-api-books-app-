@@ -1,0 +1,13 @@
+@import "../../assets/styles/palette.scss";
+@import "../../assets/styles/mixins.scss";
+
+.Footer {
+	@include displayFlex(center, center);
+	background-color: $footer-black;
+	height: 36px;
+
+	&_CopyRight {
+		font-size: 14px;
+		color: $grey-white;
+	}
+}

@@ -59,6 +59,8 @@ Some of the majour functionalities are:
 
 - One of the challenges that I faced was to control the number of re-rendering components. When multiple states are stored with `useState()`, it triggers the app to re-rendering quite often. To avoid the unnecessary or unexpected re-render, I have learnt to use a new React Hook, `useRef()`, which won't rigger the re-rendering.
 
+- Another challenges with this project was utiling the newly updated state on the event callback function. Since I was trying to utilise the sate right after the state was updated in the same thred/call back function, I always was getting the data one before/behind. This gave me a great opportunity of understaning when/how component is re-rendered along with when state is updated in React.
+
 ## Future Goals
 - Currently there are many states managed in the App.jsx level, thus prop drilling is happening. To improve the codebase, I would like to refactor the way I can manage these states such as using React `Context`, or manage the states and props at the parant components by re-organising the components structure.
 -  I would like to try utilising [Styled Component](https://styled-components.com/) as I had an intention of organing the components by the styling similality by creating a wrapper/parant components that can be reused based on the sections that takes similar stylings.  

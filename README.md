@@ -43,15 +43,25 @@ This application should look good, take some time to pick a palette and plan out
 ## Technical Implementation
 
 ### Approaches
-The app was developed with react hooks with functional components only. The SCSS modules are utilised for the styling of the app.
+The app was developed with react hooks with functional components. The SCSS modules are utilised for the styling of the app.
 
-Some of the majour functionalities are:
+Some of the featured functionalities are:
 
-- A search input field to enter keyword and the Api call will be made based on the keywords entered.
-- By default the search results will be showcased by relevance, however you can also sort it by newest by toggling the buttons.
-- The results are by default displayed with grid style but you can also switch to list style.
-- Upon click on each book card, the modal shows up with the further details of the clicked book.
-- A load more button below the list of results triggers additional books data to be fetched. The app is set to fetch 12 books per load.
+**1. A Search Field and Fetching Books**
+
+The search field takes keywords and the Google API call will be made based on the keywords entered. This will be triggered by a click event on the search button or Enter key press event. Once the either of events is triggered, `fetch()` function will initiate the process of getting data. The API is dynamicallly takes the endpoint based on the keyword that a user entered. 
+
+**2. Sorting Books Results** 
+
+The app allows users to re-order the books that was fetched via API. This is availabe by toggling the "Relevance"/ "Newest" buttons on the frontend. The state of this is managed with `[isRelevant, setIsRelevant] = useState(true);` and every updates of this state, it will trigger re-rendering the components as well as the fetching data.
+
+**3. Book Card and Modal**
+
+When an each book card/grid is clicked, the modal will be opened up with the further details of the respective book. The selected book data will be filtered by the unique ID from the current whole data on click. In order for users to close a modal, they can click the Close button on the modal or anywhere in the black faded section around it as event bubbling has been taken care of.
+
+**4. Load More Button**
+
+At the bottom of the list of results, there are a button that allows users to fetch and see more books results. Upon click the button, additional API request will be made. In this app, I have set the 12 books are fetched and added to the frontend on each request.
 
 
 ## Refection

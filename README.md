@@ -1,5 +1,5 @@
 # Google API Books Project
-This project was built in React JS with Google Books API. The app allows users to search books from the Google book library. 
+This project was built in React JS with Google Books API. The app allows users to search books from the Google books library. 
 
 The project available at https://google-api-books.tomok.dev
 
@@ -7,11 +7,13 @@ The project available at https://google-api-books.tomok.dev
 
 ## Project Brief
 ### Aims
-- This project was conducted as part of Nology program.
-- The aim of the project is to reinforce my learning in React, to practice how to work with API by going through the documentations, and to understand some of the most important JavaScript concepts such as Asynchronous JavaScript, Promises, Fetching.
+The aim of the project is to reinforce my learning in React, to practice how to work with API by going through the documentations, and to understand some of the most important JavaScript concepts such as Asynchronous JavaScript, Promises, Fetch data.
 
-### MVP
-**Basic**
+
+### MVP (conducted as Nology course work)
+
+**Basic Requirements**
+
 Create a page that allows users to search for books Page should include the following:
 
 - Header section introducing the page
@@ -33,12 +35,14 @@ This application should look good, take some time to pick a palette and plan out
 - Always use iterators over loops
 - Always parametrize and abstract large pieces of duplicate code.
 
-**Other:**
+**Other (optional but highly recommended):**
+
 - Give feedback to the user when no book results can be found for the query.
 - When a user clicks a book in the grid, a modal should appear with more book information, think about release, publish date, country, languages, etc.
 
-##Technical Implementation
+## Technical Implementation
 
+### Approaches
 The app was developed with react hooks with functional components only. The SCSS modules are utilised for the styling of the app.
 
 Some of the majour functionalities are:
@@ -48,3 +52,7 @@ Some of the majour functionalities are:
 - The results are by default displayed with grid style but you can also switch to list style.
 - Upon click on each book card, the modal shows up with the further details of the clicked book.
 - A load more button below the list of results triggers additional books data to be fetched. The app is set to fetch 12 books per load.
+
+
+## Refection
+This project was the frist react app that I have built through Nology course. The project enabled me to have a better undestanding of React components life cycle, the power of React Virtual DOM and state management with React Hoocks such as `useState()` and `useEffect()`. 

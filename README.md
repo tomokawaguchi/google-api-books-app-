@@ -11,6 +11,7 @@ The project available at https://google-api-books.tomok.dev
 - The aim of the project is to reinforce my learning in React, to practice how to work with API by going through the documentations, and to understand some of the most important JavaScript concepts such as Asynchronous JavaScript, Promises, Fetching.
 
 ### MVP
+**Basic**
 Create a page that allows users to search for books Page should include the following:
 
 - Header section introducing the page
@@ -36,7 +37,7 @@ This application should look good, take some time to pick a palette and plan out
 - Give feedback to the user when no book results can be found for the query.
 - When a user clicks a book in the grid, a modal should appear with more book information, think about release, publish date, country, languages, etc.
 
-
+##Technical Implementation
 
 The app was developed with react hooks with functional components only. The SCSS modules are utilised for the styling of the app.
 

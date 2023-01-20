@@ -5,8 +5,7 @@
 
 This project was built in React JS with Google Books API. The app allows users to search books from the Google books library. 
 
-
-![project snapshot](https://github.com/tomokawaguchi/google-api-books-app-/blob/main/src/assets/project-snapshot.png?raw=true)
+<img src="https://github.com/tomokawaguchi/google-api-books-app-/blob/main/src/assets/project-snapshot.png" width="auto" height="400" />
 
 ## Project Brief
 ### Aims
